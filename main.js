@@ -95,6 +95,7 @@ async function ambilData() {
   }
   }
 async function simpanData(message) {
+const { nomor, password } = message;
   const updatedContent = JSON.stringify(jsonData, null, 2);
   const res = await fetch("/api/submit", {
     method: "POST",
@@ -102,9 +103,8 @@ async function simpanData(message) {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      message,
-      content: updatedContent,
-      sha: fileSha
+      nomor: nomor,
+      password: password
     })
   });
   return res.ok;
